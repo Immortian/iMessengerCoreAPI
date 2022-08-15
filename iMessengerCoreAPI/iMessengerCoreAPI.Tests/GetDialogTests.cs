@@ -1,5 +1,3 @@
-using iMessengerCoreAPI.Models;
-
 namespace iMessengerCoreAPI.Tests
 {
     public class GetDialogTests

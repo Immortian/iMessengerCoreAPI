@@ -1,8 +1,6 @@
 ﻿using iMessengerCoreAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace iMessengerCoreAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -15,7 +13,7 @@ namespace iMessengerCoreAPI.Controllers
             _model = new RGDialogsClients();
         }
 
-        //Retern all dialogs in which the listed users are members
+        //Return all dialogs in which the listed clients are members
         // POST api/<RGDialogsClientsController>/list
         [HttpPost]
         [Route("[controller]/list")]
@@ -24,6 +22,7 @@ namespace iMessengerCoreAPI.Controllers
             return _model.GetDialogList(value);
         }
         
+        //Return dialog in which only listed clients are members
         // POST api/<RGDialogsClientsController>
         [HttpPost]
         public Guid GDialog([FromBody] List<Guid> value)
