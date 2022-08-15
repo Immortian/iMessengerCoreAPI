@@ -17,7 +17,6 @@ namespace iMessengerCoreAPI.Models
         public DateTime? DateEvent { get; set; }
 
         public List<RGDialogsClients> Init()
-
         {
 
             List<RGDialogsClients> L1 = new List<RGDialogsClients>();
@@ -44,6 +43,7 @@ namespace iMessengerCoreAPI.Models
                 IDClient = IDClient1
 
             });
+
             L1.Add(new RGDialogsClients
             {
 
@@ -126,9 +126,73 @@ namespace iMessengerCoreAPI.Models
             });
 
             return L1;
+        }
+        /// <summary>
+        /// Search for a dialog that includes only the listed clients
+        /// </summary>
+        /// <param name="IDClients"></param>
+        /// <returns>Dialog Guid or empty Guid if not found</returns>
+        public Guid GetDialog(List<Guid> IDClients)
+        {
+            var DCList = Init();
+            List<Guid> DList = null;
+            foreach (var client in IDClients)
+            {
+                if (DList is null)
+                    DList = DCList.Where(x => x.IDClient == client).Select(x => x.IDRGDialog).ToList();
+                else
+                {
+                    var CDialogs = DCList.Where(x => x.IDClient == client).Select(x => x.IDRGDialog).ToList();
 
+                    Guid[] DListCopy = new Guid[DList.Count];
+                    DList.CopyTo(DListCopy);
+
+                    foreach (var dialog in DListCopy)
+                    {
+                        if (!CDialogs.Contains(dialog) ||
+                            DCList.Where(x => x.IDRGDialog == dialog).Count() > IDClients.Count)
+                            DList.Remove(dialog);
+                    }
+                }
+            }
+
+            if (DList.Count == 0)
+                return Guid.Empty;
+            else
+                return DList.FirstOrDefault();
         }
 
-    }
+        /// <summary>
+        /// Search for a list of dialogs that includes all the listed clients
+        /// </summary>
+        /// <param name="IDClients"></param>
+        /// <returns>List of dialog Guids or empty Guids list if not found</returns>
+        public List<Guid> GetDialogList(List<Guid> IDClients)
+        {
+            var model = new RGDialogsClients();
+            var DCList = model.Init();
+            List<Guid> DList = null;
 
+            foreach (var client in IDClients)
+            {
+                if (DList is null)
+                    DList = DCList.Where(x => x.IDClient == client).Select(x => x.IDRGDialog).ToList();
+                else
+                {
+                    var CDialogs = DCList.Where(x => x.IDClient == client).Select(x => x.IDRGDialog).ToList();
+
+                    Guid[] DListCopy = new Guid[DList.Count];
+                    DList.CopyTo(DListCopy);
+
+                    foreach (var dialog in DListCopy)
+                    {
+                        if (!CDialogs.Contains(dialog))
+                            DList.Remove(dialog);
+                    }
+                }
+            }
+
+            return DList;
+        }
+    }
 }

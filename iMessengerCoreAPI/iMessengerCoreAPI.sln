@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMessengerCoreAPI", "iMessengerCoreAPI\iMessengerCoreAPI.csproj", "{23578CD3-EB9A-4333-9E86-646C1E86F694}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iMessengerCoreAPI.Tests", "iMessengerCoreAPI.Tests\iMessengerCoreAPI.Tests.csproj", "{D982B95B-E7AA-4BE2-9481-462C5097661E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{23578CD3-EB9A-4333-9E86-646C1E86F694}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23578CD3-EB9A-4333-9E86-646C1E86F694}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23578CD3-EB9A-4333-9E86-646C1E86F694}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D982B95B-E7AA-4BE2-9481-462C5097661E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D982B95B-E7AA-4BE2-9481-462C5097661E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D982B95B-E7AA-4BE2-9481-462C5097661E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D982B95B-E7AA-4BE2-9481-462C5097661E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
