@@ -24,6 +24,12 @@ namespace iMessengerCoreAPI.Tests
                 new Guid("0a58955e-342f-4095-88c6-1109d0f70583"),
                 new Guid("50454d55-a73c-4cbc-be25-3c5729dcb82b")
             }));
+
+            Assert.Equal<Guid>(Guid.Empty, model.GetDialog(new List<Guid>
+            {
+                new Guid(),
+                new Guid()
+            }));
         }
 
         [Fact]
