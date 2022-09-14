@@ -13,8 +13,11 @@ namespace iMessengerCoreAPI.Controllers
             _model = new RGDialogsClients();
         }
 
-        //Return all dialogs in which the listed clients are members
-        // POST api/<RGDialogsClientsController>/list
+        /// <summary>
+        /// Return all dialogs in which the listed clients are members
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("[controller]/list")]
         public List<Guid> GDList([FromBody] List<Guid> value)
@@ -22,8 +25,11 @@ namespace iMessengerCoreAPI.Controllers
             return _model.GetDialogList(value);
         }
         
-        //Return dialog in which only listed clients are members
-        // POST api/<RGDialogsClientsController>
+        /// <summary>
+        /// Return dialog in which only listed clients are members
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         [HttpPost]
         public Guid GDialog([FromBody] List<Guid> value)
         {
